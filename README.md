@@ -1,6 +1,6 @@
-# MRT Train Lines Messaging System
+# METRO Train Lines Messaging System
 
-A real-time messaging application for MRT (Mass Rapid Transit) alerts using **Kafka** for message streaming and **Redis** for high-speed caching.
+A real-time messaging application for METRO (Mass Rapid Transit) alerts using **Kafka** for message streaming and **Redis** for high-speed caching.
 
 ## 🏗️ Architecture Overview
 
@@ -9,7 +9,7 @@ This application demonstrates a robust, scalable real-time messaging system that
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   User Input    │───▶│   Kafka Topic   │───▶│  Redis Cache    │
-│  (CLI Commands) │    │  'mrt-alerts'   │    │ (Recent Messages)│
+│  (CLI Commands) │    │ 'metro-alerts'  │    │ (Recent Messages)│
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          ▼                       ▼                       ▼
@@ -31,7 +31,7 @@ This application demonstrates a robust, scalable real-time messaging system that
 
 ### Real-Time Messaging (Kafka)
 - **Message Broadcasting**: Alerts are distributed to all connected consumers
-- **Topic Management**: Automatically creates `mrt-alerts` topic if it doesn't exist
+- **Topic Management**: Automatically creates `metro-alerts` topic if it doesn't exist
 - **Scalable Architecture**: Multiple producers and consumers can operate simultaneously
 - **Message Persistence**: Messages are stored and can be replayed
 - **Fault Tolerance**: System continues operating even if some components fail
@@ -43,7 +43,7 @@ This application demonstrates a robust, scalable real-time messaging system that
 - **Memory Efficiency**: Uses Redis lists for optimal queue management
 
 ### Interactive CLI
-- **Send Alerts**: Type any message to broadcast MRT alerts
+- **Send Alerts**: Type any message to broadcast METRO alerts
 - **View History**: Type `recent` to see cached recent alerts
 - **Clean Exit**: Type `exit` to gracefully shut down all connections
 
@@ -70,7 +70,7 @@ The application is configured in `app.js`:
 ```javascript
 // Kafka Configuration
 const KAFKA_BROKERS = ['localhost:9092'];
-const KAFKA_TOPIC = 'mrt-alerts';
+const KAFKA_TOPIC = 'metro-alerts';
 
 // Redis Configuration
 const REDIS_CONFIG = {
@@ -78,7 +78,7 @@ const REDIS_CONFIG = {
 };
 
 // Cache Settings
-const REDIS_MESSAGE_KEY = 'recent-mrt-train-lines-alerts';
+const REDIS_MESSAGE_KEY = 'recent-metro-train-lines-alerts';
 const MAX_REDIS_MESSAGES = 10; // Number of recent messages to cache
 ```
 
@@ -103,22 +103,22 @@ node app.js
 
 ### Step 4: Use the CLI
 ```
-MRT Train Lines Alert > Circle Line: Signal fault at Bishan
+METRO Train Lines Alert > Circle Line: Signal fault at Bishan
 [Producer] Sent: "Circle Line: Signal fault at Bishan"
 
-MRT Train Lines Alert > recent
+METRO Train Lines Alert > recent
 --- Recent Alerts (from Redis Cache) ---
 - Circle Line: Signal fault at Bishan
 ----------------------------------------
 
-MRT Train Lines Alert > exit
+METRO Train Lines Alert > exit
 ```
 
 ## 🔄 Message Flow Architecture
 
 ### 1. Message Publishing Flow
 ```
-User Input → Kafka Producer → mrt-alerts Topic → All Consumers → Redis Cache → Display
+User Input → Kafka Producer → metro-alerts Topic → All Consumers → Redis Cache → Display
 ```
 
 ### 2. Message Consumption Flow
@@ -157,12 +157,12 @@ await producer.send({
   messages: [{ value: message }]
 });
 ```
-- Sends MRT alert messages to the Kafka topic
+- Sends METRO alert messages to the Kafka topic
 - Ensures message delivery to all subscribers
 
 #### Consumer
 ```javascript
-const consumer = kafka.consumer({ groupId: 'mrt-train-lines-alert-group' });
+const consumer = kafka.consumer({ groupId: 'metro-train-lines-alert-group' });
 await consumer.run({
   eachMessage: async ({ message }) => {
     // Process incoming alerts
@@ -227,7 +227,7 @@ The application includes comprehensive error handling:
 
 | Command | Description | Example |
 |---------|-------------|---------|
-| `[message]` | Send MRT alert | `Red Line: 15 min delay at Orchard` |
+| `[message]` | Send METRO alert | `Red Line: 15 min delay at Orchard` |
 | `recent` | View cached alerts | Shows last 10 messages from Redis |
 | `exit` | Shutdown application | Cleanly disconnects all services |
 
@@ -276,4 +276,4 @@ This project is for educational purposes as part of the LHUB Full-Stack Developm
 
 ---
 
-**Built with ❤️ for Singapore's MRT System**
+**Built with ❤️ for Singapore's METRO System**
