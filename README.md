@@ -1,4 +1,4 @@
-# METRO Train Lines Messaging System
+# METRO Lines Messaging System
 
 A real-time messaging application for METRO (Mass Rapid Transit) alerts using **Kafka** for message streaming and **Redis** for high-speed caching.
 
