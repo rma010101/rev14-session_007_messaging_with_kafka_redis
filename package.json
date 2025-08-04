@@ -1,0 +1,16 @@
+{
+  "name": "session_007_msg_kafka_redis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "redis": "^5.7.0"
+  }
+}
