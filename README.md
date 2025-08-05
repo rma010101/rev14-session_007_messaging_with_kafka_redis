@@ -8,14 +8,14 @@ This application demonstrates a robust, scalable real-time messaging system that
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   User Input    │───▶│   Kafka Topic   │───▶│  Redis Cache    │
-│  (CLI Commands) │    │ 'metro-alerts'  │    │ (Recent Messages)│
+│   User Input    │──▶│   Kafka Topic   │───▶│  Redis Cache    │
+│  (CLI Commands) │    │ 'metro-alerts'  │    │(Recent Messages)│
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          ▼                       ▼                       ▼
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Producer      │    │   Consumer      │    │   Fast Retrieval│
-│ (Send Messages) │    │(Receive Messages)│    │ (Type 'recent') │
+│   Producer      │    │   Consumer      │    │  Fast Retrieval │
+│ (Send Messages) │    (Receive Messages)│    │ (Type 'recent') │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
