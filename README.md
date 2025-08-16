@@ -272,7 +272,7 @@ The application includes comprehensive error handling:
 
 ## 📄 License
 
-MIT
+rma010101
 ---
 
 **Built with ❤️ for Singapore's METRO System**
