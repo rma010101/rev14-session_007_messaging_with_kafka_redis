@@ -272,8 +272,7 @@ The application includes comprehensive error handling:
 
 ## 📄 License
 
-This project is for educational purposes as part of the LHUB Full-Stack Development course.
-
+MIT
 ---
 
 **Built with ❤️ for Singapore's METRO System**
